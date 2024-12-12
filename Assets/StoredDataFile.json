@@ -1,6 +1,11 @@
 {
   "SkinPlayer": 0,
   "ByItemList": [],
-  "levelsStarsView": [],
-  "Money": 0
+  "levelsStarsView": [
+    0,
+    0,
+    0,
+    2
+  ],
+  "Money": 2
 }

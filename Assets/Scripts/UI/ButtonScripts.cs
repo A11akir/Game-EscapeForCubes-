@@ -125,7 +125,7 @@ public class ButtonScripts : MonoBehaviour
 
     public void Pause()
     {
-        if (!MenuWindow1.activeSelf)
+        if (!MenuWindow1.activeSelf && !WonWindow.activeSelf && !MenuWindow2.activeSelf)
         {
             pauseGame.isPause = true;
             pauseGame.PauseForButton();

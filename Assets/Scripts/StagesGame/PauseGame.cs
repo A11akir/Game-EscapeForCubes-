@@ -7,8 +7,10 @@ public class PauseGame : MonoBehaviour
 
     [Inject] ButtonScripts buttonScripts;
 
-    [SerializeField] GameObject MenuWindow;
+    [SerializeField] GameObject MenuWindow1;
+    [SerializeField] GameObject MenuWindow2;
     [SerializeField] GameObject ShopWindow;
+    [SerializeField] GameObject WonWindow;
 
     [HideInInspector] public bool isPause = false;
 
@@ -35,7 +37,7 @@ public class PauseGame : MonoBehaviour
 
     public void OnPause()
     {
-        if (!MenuWindow.activeSelf && !ShopWindow.activeSelf)
+        if (!MenuWindow1.activeSelf && !ShopWindow.activeSelf && !WonWindow.activeSelf && !MenuWindow2.activeSelf)
         {
             if (!isPause)
             {
