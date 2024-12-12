@@ -1,0 +1,20 @@
+# Unity generated files
+.vs/
+.vscode/
+.idea/
+Library/
+Temp/
+Obj/
+Build/
+BuildPlayerData/
+.userprefs
+
+# User-specific files
+*.swp
+*.suo
+*.user
+*.userosscache
+*.sln
+*.csproj
+*.pidb
+*.booproj
