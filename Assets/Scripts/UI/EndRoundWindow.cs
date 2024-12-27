@@ -10,6 +10,8 @@ public class EndRoundWindow : MonoBehaviour
     private LevelsStars levelsStars;
     private GiveCoins giveCoins;
 
+    [SerializeField] private AudioSource victorySound;
+
     private int spendTimeUI;
 
     [Inject]
@@ -31,6 +33,7 @@ public class EndRoundWindow : MonoBehaviour
 
     private void Start()
     {
+
         WonWindow.SetActive(false);
         ActiveStars(3, false);
         
@@ -74,17 +77,18 @@ public class EndRoundWindow : MonoBehaviour
         if (expScript.CurrentExp >= levelsStars.scoreThreeStar && !stars[2].activeSelf)
         {
             ActiveStars(3, true);
-            congratulationsText.text = "Congratulations!";
+            ShowEffect();
         }
         else if (expScript.CurrentExp >= levelsStars.scoreTwoStar && !stars[1].activeSelf)
         {
             ActiveStars(2, true);
-            congratulationsText.text = "Congratulations!";
+            ShowEffect();
+
         }
         else if (expScript.CurrentExp >= levelsStars.scoreOneStar && !stars[0].activeSelf)
         {
             ActiveStars(1, true);
-            congratulationsText.text = "Congratulations!";
+            ShowEffect();
         }
         else if (expScript.CurrentExp <= levelsStars.scoreOneStar)
         {
@@ -93,6 +97,12 @@ public class EndRoundWindow : MonoBehaviour
         }
 
         moneyRewardText.text = giveCoins.valueMoney.ToString();
+    }
+
+    private void ShowEffect()
+    {
+        congratulationsText.text = "Congratulations!";
+        victorySound.Play();
     }
 }
 

@@ -6,6 +6,7 @@ public class EnemyExplosion : ObjectTag, IEnemy
     [SerializeField] private ParticleDestroy particleDestroy;
     [SerializeField] private ExplosionVisual explosionVisual;
     [SerializeField] ExpScript expScript;
+    [SerializeField] private PickScripts pickScripts;
 
     [SerializeField] private int expCount = 1;
 
@@ -19,8 +20,6 @@ public class EnemyExplosion : ObjectTag, IEnemy
     {
         objectTagEnum = ObjectTagEnum.EnemyExplosion;
     }
-
-    
 
     private void OnEnable()
     {
@@ -39,6 +38,7 @@ public class EnemyExplosion : ObjectTag, IEnemy
             expScript.ChangedExp(expCount);
 
             particleDestroy.PlayParticleAndDetach();
+            pickScripts.OnSoundPick();
 
             gameObject.SetActive(false);
         }

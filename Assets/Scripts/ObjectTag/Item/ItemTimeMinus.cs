@@ -3,7 +3,7 @@ using UnityEngine;
 public class ItemTimeMinus : ObjectTag, IItem
 {
     [SerializeField] private ParticleDestroy particleDestroy;
-
+    [SerializeField] private PickScripts pickScripts;
     [SerializeField] private int debafTime = 1;
 
     [SerializeField] PlayerTrigger playerTrigger;
@@ -22,7 +22,7 @@ public class ItemTimeMinus : ObjectTag, IItem
             timer.SecondCountMax -= debafTime;
 
             timer.ChangedTime();
-
+            pickScripts.OnSoundPick();
             particleDestroy.PlayParticleAndDetach();
 
             gameObject.SetActive(false);

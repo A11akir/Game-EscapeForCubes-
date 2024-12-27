@@ -25,6 +25,10 @@ public sealed class SceneInstaller : MonoInstaller
         this.Container.Bind<SpawnerShuriken>().FromComponentInHierarchy().AsSingle();
         this.Container.Bind<PauseGame>().FromComponentInHierarchy().AsSingle();
         this.Container.Bind<PhysicsDebaf>().FromComponentInHierarchy().AsSingle();
+        this.Container.Bind<PickScripts>().FromComponentInHierarchy().AsSingle();
+        this.Container.Bind<MusicScripts>().FromComponentInHierarchy().AsSingle();
+        this.Container.Bind<BlockLevel>().FromComponentInHierarchy().AsSingle();
+        this.Container.Bind<SoundOff>().FromComponentInHierarchy().AsSingle();
 
         this.Container.Bind<StoredData>().AsSingle();
         this.Container.Bind<StartRoundScript>().AsSingle();

@@ -57,7 +57,7 @@ public class SpawnerShuriken : MonoBehaviour
         }
         else
         {
-            Invoke("Inactive", 3);
+            Invoke("Inactive", 1.2f);
         }
     }
 

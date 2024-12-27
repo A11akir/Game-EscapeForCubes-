@@ -9,18 +9,20 @@ public class SaveJson
     private StoredData storedData;
     private HideLevelsView hideLevelsView;
     private ChangeSkin changeSkin;
+    private BlockLevel blockLevel;
 
     public int SkinPlayerData;
     public int MoneyData;
     public List<int> levelsStarsViewData;
     public List<int> ByItemListData = new List<int>();
 
-    public SaveJson(GiveCoins giveCoins, StoredData storedData, HideLevelsView hideLevelsView, ChangeSkin changeSkin)
+    public SaveJson(GiveCoins giveCoins, StoredData storedData, HideLevelsView hideLevelsView, ChangeSkin changeSkin, BlockLevel blockLevel)
     {
         this.giveCoins = giveCoins;
         this.storedData = storedData;
         this.hideLevelsView = hideLevelsView;
         this.changeSkin = changeSkin;
+        this.blockLevel = blockLevel;
     }
 
     public void Save()
@@ -61,6 +63,7 @@ public class SaveJson
         levelsStarsViewData = data.levelsStarsView;
         storedData.levelsStarsView = data.levelsStarsView;
 
+        blockLevel.BlockLoad();
         giveCoins.ChangedAmount();
         hideLevelsView.ViewStars();
         changeSkin.SkinLoad();

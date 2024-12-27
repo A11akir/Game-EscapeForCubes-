@@ -4,6 +4,7 @@ public class EnemyStealth : ObjectTag, IEnemy
 {
     [SerializeField] private ExpScript expScript;
     [SerializeField] private ParticleDestroy particleDestroy;
+    [SerializeField] private PickScripts pickScripts;
 
     [SerializeField] private int expCount = 1;
 
@@ -18,6 +19,7 @@ public class EnemyStealth : ObjectTag, IEnemy
         {
             expScript.ChangedExp(expCount);
 
+            pickScripts.OnSoundPick();
             particleDestroy.PlayParticleAndDetach();
 
             gameObject.SetActive(false);

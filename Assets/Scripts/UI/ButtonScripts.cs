@@ -10,10 +10,12 @@ public class ButtonScripts : MonoBehaviour
     private ChangeSkin changeSkin;
     private AddItem addItem;
     private PauseGame pauseGame;
+    private SoundOff soundOff;
+    private MusicScripts musicScripts;
 
     [Inject]
-    public void Construct(EndRoundScript endRoundScript, LevelConfigSpawner levelConfig, 
-        StartRoundScript startRoundScript, ChangeSkin changeSkin, AddItem addItem, PauseGame pauseGame)
+    public void Construct(EndRoundScript endRoundScript, LevelConfigSpawner levelConfig, StartRoundScript startRoundScript,
+        ChangeSkin changeSkin, AddItem addItem, PauseGame pauseGame, SoundOff soundOff, MusicScripts musicScripts)
     {
         this.endRoundScript = endRoundScript;
         this.levelConfig = levelConfig;
@@ -21,6 +23,8 @@ public class ButtonScripts : MonoBehaviour
         this.changeSkin = changeSkin;
         this.addItem = addItem;
         this.pauseGame = pauseGame;
+        this.soundOff = soundOff;
+        this.musicScripts = musicScripts;
     }
 
     [HideInInspector] public int currentLevel;
@@ -41,6 +45,7 @@ public class ButtonScripts : MonoBehaviour
     [SerializeField] private GameObject PauseMiniWindow;
     [SerializeField] private GameObject CurencyWindow;
     [SerializeField] private GameObject[] levelsButton;
+    [SerializeField] private GameObject SoundButtonGO;
 
 
     private void Start()
@@ -115,6 +120,8 @@ public class ButtonScripts : MonoBehaviour
         ShopWindow.SetActive(false);
         WonWindow.SetActive(false);
         MenuWindow1.SetActive(true);
+        SoundButtonGO.SetActive(true);
+        musicScripts.MusicVolumeMinus();
 
         if (pauseGame.isPause == true)
         {
@@ -131,6 +138,8 @@ public class ButtonScripts : MonoBehaviour
             pauseGame.PauseForButton();
             PauseWindow.SetActive(true);
             PauseMiniWindow.SetActive(false);
+            SoundButtonGO.SetActive(true);
+            musicScripts.MusicVolumeMinus();
         }    
     }
 
@@ -139,7 +148,9 @@ public class ButtonScripts : MonoBehaviour
         pauseGame.isPause = false;
         pauseGame.PlayForButton();
         PauseWindow.SetActive(false);
+        SoundButtonGO.SetActive(false);
         PauseMiniWindow.SetActive(true);
+        musicScripts.MusicVolumePlus();
     }
 
     public void Next()
@@ -147,6 +158,8 @@ public class ButtonScripts : MonoBehaviour
         WonWindow.SetActive(false);
         MenuWindow1.SetActive(false);
         MenuWindow2.SetActive(false);
+        SoundButtonGO.SetActive(false);
+        musicScripts.MusicVolumePlus();
 
         endRoundScript.RefreshRound();
         endRoundScript.RefreshSpawner();
@@ -188,6 +201,7 @@ public class ButtonScripts : MonoBehaviour
         WonWindow.SetActive(false);
         MenuWindow1.SetActive(false);
         MenuWindow2.SetActive(false);
+        musicScripts.MusicVolumePlus();
 
         endRoundScript.RefreshRound();
         endRoundScript.RefreshSpawner();
@@ -211,6 +225,8 @@ public class ButtonScripts : MonoBehaviour
         PauseMiniWindow.SetActive(true);
         MenuWindow1.SetActive(false);
         MenuWindow2.SetActive(false);
+        SoundButtonGO.SetActive(false);
+        musicScripts.MusicVolumePlus();
         Time.timeScale = 1.0f;
 
         endRoundScript.RefreshRound();
@@ -239,4 +255,9 @@ public class ButtonScripts : MonoBehaviour
 
     public void SelectBoughtSkinButton() => changeSkin.SelectBoughtSkin();
     public void SelectDefaultSkinButton() => changeSkin.SelectStandartSkin();
+
+    public void SoundButton()
+    {
+        soundOff.SoundButton();
+    }
 }
